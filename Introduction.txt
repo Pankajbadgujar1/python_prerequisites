@@ -1,0 +1,33 @@
+Create virtual env using conda :
+conda create -p venv python==3.12
+
+
+To activate venv 
+conda activate venv/
+
+
+To activate this environment, use                                                                                             
+#                                                                                                                               
+#     $ conda activate "D:\Agentic AI Cource\venv"
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+
+
+Create virtual env using uv :--  
+pip install uv
+
+Create new folder :--  uv init demouv
+
+Move to this directry :-- cd demouv
+
+Create env :--  uv venv
+
+Activate env : --  .venv\Scripts\activate
+
+Add any package using uv
+uv add <package-name>
+
+Eg uv add pandas
