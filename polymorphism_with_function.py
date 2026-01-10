@@ -1,3 +1,8 @@
+class Shape:
+    def area(self):
+        return "The area of the figure"
+
+#Derived class 1
 class Rectange(Shape):
     def __init__(self,width, height):
         self.width = width
