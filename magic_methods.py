@@ -1,7 +1,11 @@
+"""
 Magic method 
 
 Magic methods are predefined methods in Python that you can override to change the behavior 
 of your objects. 
+
+These methods enable you to define the behavior of objects for built-in operations, such as arithmetic operations , comparisons, and more
+
 
 Some common magic methods are: 
 __init__: Initializes a new instance of a class
@@ -15,7 +19,21 @@ __setitem__: Set an item in a container
 \
 """
 class Person:
-    pass
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+    
+    def __str__(self):
+        return f"{self.name}, {self.age} years old"
 
-obj = Person()
-dir(Person)
+
+    def __repr__(self):
+        return f"Person (name={self.name}, age={self.age})"
+
+obj = Person("Pankaj",23)
+
+print(obj)
+print(repr(obj))
+
+#print(dir(obj))
+
