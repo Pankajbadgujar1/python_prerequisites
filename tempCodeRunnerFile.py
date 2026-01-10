@@ -1,12 +1,13 @@
-class Dog:
-    def __init__(self,name,age):
-        self.name = name
-        self.age = age
-    
-    def bark(self):
-        print(f'{self.name} say woof')
-    
-dog1 = Dog("lucky",4)
-print(dog1.name)
-print(dog1.age)
-dog1.bark()
+
+class Dog(Animal,Pet):
+    def __init__(self,name,owner):
+        Animal.__init__(self,name)  ## we use this type because we inherite child from multiple parent class
+        Pet.__init__(self,owner)
+
+    def speak(self):
+        return f"{self.name} say woof"
+
+# Create an object of Dog class
+
+dog = Dog("Mukesh","Pankaj")
+dog.speak()
