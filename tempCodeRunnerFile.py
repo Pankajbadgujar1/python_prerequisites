@@ -1,21 +1,15 @@
-Magic method 
+e object that can hold any data type .
+         It is similar to column in a table 
 
-Magic methods are predefined methods in Python that you can override to change the behavior 
-of your objects. 
+DataFrame : Dataframe is two-dimentional , size-mutable, and potentially heterogeneous tabular
+            data structure with labeled axes(rows and columns)
 
-Some common magic methods are: 
-__init__: Initializes a new instance of a class
-__str__:  Returns a string representation of an object
-__repr__:  Return an official string representation of an object.
-__len__:  Retruns th lenght of an object.
-__getitem__: Gets an item from a container.
-__setitem__: Set an item in a container
-
-
-\
 """
-class Person:
-    pass
+import pandas as pd
 
-obj = Person()
-dir(Person)
+## series 
+
+data =[1,2,3,4,5]
+series = pd.Series(data)
+print(series)
+print(type(series))
