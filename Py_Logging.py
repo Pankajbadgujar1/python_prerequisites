@@ -19,7 +19,16 @@ CRITICAL	=>       App crashed
 """
 import logging
 ## Configure the basic logging settings
-logging.basicConfig(level=logging.DEBUG)
+#logging.basicConfig(level=logging.DEBUG)
+
+
+logging.basicConfig(
+    filename='app.log',
+    filemode='w+',
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s-%(levelname)s-%(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
 
 ## Log Messanges
 logging.debug("This is dubug message")
