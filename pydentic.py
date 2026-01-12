@@ -26,3 +26,111 @@ Battle tested — Pydantic is downloaded over 360M times/month and is used by al
 
 
 '''
+## Pydantic Basics : Creating and Using Models 
+from pydantic import BaseModel
+
+class Person(BaseModel):
+    name:str
+    age:int
+    city:str
+
+person = Person(name="pankaj",age=23,city="jalgaon")
+
+print(person)
+
+## Example 2
+from pydantic import BaseModel
+from typing import Optional
+class Employee(BaseModel):
+    id : int
+    name: str
+    department: str
+    salary: Optional[float] = None #Optional with default value
+    is_active:Optional[bool] = True # Optional with default True
+
+
+emp = Employee(id=1, name="John", department="IT")
+print(emp) 
+
+# emp = Employee(id=1, name="John", department="IT", salary= 6000,is_active=False)
+# print(emp)
+
+'''
+Defination : 
+- Optional[type] : Indicates the filed can be None
+
+- Default value = (None or True) : Makes the field optional
+
+- Required fields must still be provided
+
+- pydantic validates types even for optional fileds when values
+'''
+
+
+# Example 3
+from pydantic import BaseModel
+from typing import List
+
+class Classroom(BaseModel):
+    room_number : str
+    students :List[str] # list of strings
+    capacity : int
+    
+# Create a classroom
+classroom = Classroom(
+    room_number="101",
+    students= ['ram','sita','lav','kush'],
+    capacity=30
+    )
+print(classroom)
+
+# Create a classroom with Tuple ## Atomatic typecasting is happend
+classroom = Classroom(
+    room_number="101",
+    students= ('ram','sita','lav','kush'),
+    capacity=30
+    )
+print(classroom)
+
+# use of try Except
+try:
+    invalid_val=Classroom(room_number=34,students= ['ram','sita','lav','kush'],capacity=30)
+except ValueError as e:
+    print(e)
+
+
+# Example 4 :  Model with Nested class
+from pydantic import BaseModel
+
+class Address(BaseModel):
+    street: str
+    city: str
+    zip_code: int
+
+class Customer(BaseModel):
+    customer_id : int
+    name : str
+    address : Address # nested Address model
+
+# create a customer with nested address 
+
+customer  = Customer(
+    customer_id=1,
+    name="Pankaj",
+    address={ "street":"123 main st",  "city":"Jalgoan",
+              "zip_code":"12345"}
+    )
+print(customer)
+
+
+# Example 5 of Field
+from pydantic import BaseModel,Field
+class Item(BaseModel):
+    name:str=Field(min_lenght=2,max_length=50)
+    price:float=Field(gt=0,le=1000) # greater that 0, less than or equal to 1000
+    quantity:int=Field(ge=0)
+
+# valid instance
+item = Item(name="Book", price=456, quantity=10)
+
+print(item)
